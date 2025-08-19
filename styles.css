@@ -1,39 +1,35 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f9;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pokémon-themed colors */
+.bg-pokemon-yellow {
+    background-color: #FFDE00;
+}
+.text-pokemon-red {
+    color: #FF0000;
+}
+.text-pokemon-blue {
+    color: #3B4CCA;
 }
 
-h1 {
-  color: #ff1c1c;
+/* Pokémon-style font */
+.font-pokemon {
+    font-family: 'Press Start 2P', cursive;
 }
 
-input {
-  padding: 10px;
-  font-size: 16px;
-  margin-right: 10px;
+/* Search bar styles */
+.search-bar-center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
-button {
-  padding: 10px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.pokemon-card {
-  margin-top: 20px;
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-  width: 250px;
-}
-
-.pokemon-card img {
-  width: 120px;
-  height: 120px;
+/* Center result card content */
+.result-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

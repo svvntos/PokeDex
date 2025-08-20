@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Pokémon Search</title>
-    <link rel="stylesheet" href="output.css">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokémon Search</title>
+
+  <!-- 1) Bootstrap FIRST -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- 2) Your overrides AFTER -->
+  <link rel="stylesheet" href="src/styles.css">
 </head>
-<body class="bg-pokemon-yellow min-h-screen flex items-center justify-center">
+<body>
+  <!-- Full-screen center wrapper -->
+  <main class="min-vh-100 d-flex flex-column justify-content-center align-items-center w-100">
 
-    <div class="flex flex-col items-center w-full max-w-md p-6 bg-gray-100 rounded-xl shadow-lg">
-        <!-- Centered Search Input -->
-        <div class="search-bar-center w-full mb-6">
-            <input id="pokemonInput" type="text" placeholder="Enter Pokémon name"
-                class="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-green-400 font-pokemon">
-            <button id="searchBtn"
-                class="px-6 py-2 bg-green-500 text-white rounded-r-md hover:bg-green-600 transition-colors font-pokemon">
-                Search
-            </button>
-        </div>
+    <div class="container text-center">
+      <h1 class="text-white mb-4">Pokémon Search</h1>
 
-        <!-- Result Card -->
-        <div id="pokemonResult" class="bg-pokemon-yellow rounded-xl shadow-lg p-6 w-72 text-center hidden result-center">
-            <h2 class="text-xl font-semibold capitalize mb-2 text-pokemon-red font-pokemon"></h2>
-            <img class="mx-auto mb-4" src="" alt="Pokemon Image">
-            <p class="text-gray-700 font-pokemon"></p>
-        </div>
+      <div class="input-group mb-4 mx-auto" style="max-width: 520px;">
+        <input id="pokemonInput" type="text" class="form-control" placeholder="Enter Pokémon name..." />
+        <button id="searchBtn" class="btn btn-success">Search</button>
+      </div>
 
-        <!-- Error Message -->
-        <p id="error" class="text-pokemon-red mt-2 font-pokemon"></p>
+      <!-- Your JS targets this -->
+      <div id="pokemonResult" class="pokemon-card d-none"></div>
     </div>
 
-    <script src="script.js"></script>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="src/script.js"></script>
 </body>
 </html>
-

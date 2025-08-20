@@ -1,0 +1,49 @@
+/* Optional polish; does NOT affect centering */
+body { 
+  background-color: #3B4CCA !important;
+}
+#pokemonResult {
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* If you render a .pokemon-card via innerHTML, make it nice */
+.pokemon-card {
+  padding: 1rem 1.25rem;
+  background-color: #d6d300;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .75rem;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 520px;
+}
+.pokemon-card img {
+  max-width: 180px;
+  display: block;
+  margin: .25rem auto 1rem;
+}
+.pokemon-card ul {
+  list-style: none;
+  padding-left: 0; /* removes the indent */
+  margin: 0;       /* optional: tighter look */
+}
+
+.pokemon-card li {
+  border-bottom: 1px solid #ffffff;
+  padding: 4px 0;
+}
+.pokemon-card li:last-child {
+  border-bottom: none; /* remove the last border */
+}
+
+
+
+
+

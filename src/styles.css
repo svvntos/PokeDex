@@ -23,6 +23,7 @@ body {
   margin: 0 auto;
   width: 100%;
   max-width: 520px;
+  animation: fadeIn 0.5s ease;
 }
 .pokemon-card img {
   max-width: 180px;
@@ -41,6 +42,20 @@ body {
 }
 .pokemon-card li:last-child {
   border-bottom: none; /* remove the last border */
+}
+
+/* Fade-in animation for card */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95);}
+  to { opacity: 1; transform: scale(1);}
+}
+
+/* Spinner animation (Bootstrap already spins, but for custom spinners) */
+@keyframes spin {
+  to { transform: rotate(360deg);}
+}
+.spinner-border {
+  animation: spin 0.8s linear infinite;
 }
 
 

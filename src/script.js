@@ -1,4 +1,6 @@
-document.getElementById("searchBtn").addEventListener("click", () => fetchPokemon());
+document
+  .getElementById("searchBtn")
+  .addEventListener("click", () => fetchPokemon());
 
 document.getElementById("randomBtn").addEventListener("click", () => {
   fetchPokemon(getRandomPokemonId());
@@ -17,27 +19,45 @@ function showLoading(resultDiv) {
 function renderPokemonCard(data) {
   return `
     <div class="pokemon-card shadow-lg rounded-4 p-4 bg-warning-subtle border border-2 border-warning">
-      <h2 class="mb-3 text-uppercase text-primary-emphasis fw-bold">${data.name}</h2>
-      <img src="${data.sprites.front_default}" alt="${data.name}" class="mb-3 rounded bg-white border" />
+      <h2 class="mb-3 text-uppercase text-primary-emphasis fw-bold">${
+        data.name
+      }</h2>
+      <img src="${data.sprites.front_default}" alt="${
+    data.name
+  }" class="mb-3 rounded bg-white border" />
       <p class="mb-2"><span class="fw-semibold text-secondary">Type:</span> ${data.types
-        .map((t) => `<span class="badge bg-primary-subtle text-primary-emphasis me-1">${t.type.name}</span>`)
+        .map(
+          (t) =>
+            `<span class="badge bg-primary-subtle text-primary-emphasis me-1">${t.type.name}</span>`
+        )
         .join(" ")}</p>
       <div class="row mb-2">
-        <div class="col"><span class="fw-semibold">Height:</span> ${data.height / 10} m</div>
-        <div class="col"><span class="fw-semibold">Weight:</span> ${data.weight / 10} kg</div>
+        <div class="col"><span class="fw-semibold">Height:</span> ${
+          data.height / 10
+        } m</div>
+        <div class="col"><span class="fw-semibold">Weight:</span> ${
+          data.weight / 10
+        } kg</div>
       </div>
       <p class="mb-2"><span class="fw-semibold text-secondary">Abilities:</span> ${data.abilities
-        .map((a) => `<span class="badge bg-success-subtle text-success-emphasis me-1">${a.ability.name}</span>`)
+        .map(
+          (a) =>
+            `<span class="badge bg-success-subtle text-success-emphasis me-1">${a.ability.name}</span>`
+        )
         .join(" ")}</p>
       <p class="fw-semibold mt-3 mb-1 text-danger-emphasis">Base Stats:</p>
       <ul class="list-group mb-3">
         ${data.stats
-          .map((s) => `<li class="list-group-item d-flex justify-content-between align-items-center">${s.stat.name}<span class="badge bg-danger-subtle text-danger-emphasis">${s.base_stat}</span></li>`)
+          .map(
+            (s) =>
+              `<li class="list-group-item d-flex justify-content-between align-items-center">${s.stat.name}<span class="badge bg-danger-subtle text-danger-emphasis">${s.base_stat}</span></li>`
+          )
           .join("")}
       </ul>
       <p class="fw-semibold mt-3 mb-1 text-info-emphasis">Moves:</p>
       <ul class="list-group">
-        ${data.moves.slice(0, 5)
+        ${data.moves
+          .slice(0, 5)
           .map((m) => `<li class="list-group-item">${m.move.name}</li>`)
           .join("")}
       </ul>
@@ -80,7 +100,7 @@ async function fetchPokemon(pokemonNameOrId) {
     }
     const data = await response.json();
     resultDiv.innerHTML = renderPokemonCard(data);
-    resultDiv.classList.remove('d-none');
+    resultDiv.classList.remove("d-none");
   } catch (error) {
     showError(resultDiv, error.message);
   }

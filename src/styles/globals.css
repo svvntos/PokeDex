@@ -1,113 +1,188 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  body {
-    @apply bg-gradient-to-br from-pokedex-blue to-indigo-900 min-h-screen;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+/* Tailwind v4 CSS-based theme configuration */
+@theme {
+  --color-pokedex-red: #DC0A2D;
+  --color-pokedex-blue: #3B4CCA;
+  --color-pokedex-yellow: #FFCB05;
+  --color-pokedex-dark: #1A1A1A;
+  --color-pokedex-light: #F5F5F5;
 
-  * {
-    @apply box-border;
-  }
+  --font-family-pokemon: "Flexo-Demi", system-ui, sans-serif;
+
+  --animate-fade-in: fade-in 0.5s ease-in-out;
+  --animate-slide-up: slide-up 0.4s ease-out;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-spin-slow: spin 2s linear infinite;
 }
 
-@layer components {
-  /* Pokedex Frame Styles */
-  .pokedex-frame {
-    @apply relative rounded-3xl shadow-2xl overflow-hidden;
-    background: linear-gradient(145deg, #dc0a2d 0%, #b8082a 100%);
-  }
-
-  .pokedex-screen {
-    @apply bg-gradient-to-b from-slate-800 to-slate-900 rounded-lg p-4;
-    border: 3px solid #2a2a2a;
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
-  }
-
-  /* Button Styles */
-  .pokedex-button {
-    @apply px-6 py-3 rounded-full font-bold uppercase tracking-wide;
-    @apply transition-all duration-200 transform active:scale-95;
-    @apply shadow-lg hover:shadow-xl;
-  }
-
-  .pokedex-button-primary {
-    @apply bg-pokedex-yellow text-gray-900 hover:bg-yellow-400;
-  }
-
-  .pokedex-button-secondary {
-    @apply bg-slate-700 text-white hover:bg-slate-600;
-  }
-
-  /* Pokemon Card */
-  .pokemon-card {
-    @apply bg-white rounded-xl shadow-lg p-6;
-    @apply transform transition-all duration-300;
-    @apply hover:scale-105 hover:shadow-2xl;
-  }
-
-  /* Type Badge */
-  .type-badge {
-    @apply px-3 py-1 rounded-full text-white text-sm font-bold uppercase;
-    @apply inline-block shadow-md;
-  }
-
-  /* Loading Spinner */
-  .pokeball-spinner {
-    @apply w-16 h-16 relative animate-spin-slow;
-  }
-
-  /* Input Styles */
-  .pokedex-input {
-    @apply w-full px-4 py-3 rounded-lg bg-slate-800 text-white;
-    @apply border-2 border-slate-600 focus:border-pokedex-yellow;
-    @apply focus:outline-none focus:ring-2 focus:ring-pokedex-yellow/50;
-    @apply transition-all duration-200;
-  }
-
-  /* Stats Bar */
-  .stat-bar {
-    @apply w-full h-2 bg-slate-700 rounded-full overflow-hidden;
-  }
-
-  .stat-bar-fill {
-    @apply h-full bg-gradient-to-r from-pokedex-yellow to-orange-500;
-    @apply transition-all duration-500 ease-out;
-  }
+@keyframes fade-in {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
 }
 
-@layer utilities {
-  .text-shadow {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  }
-
-  .glow {
-    box-shadow: 0 0 20px rgba(255, 203, 5, 0.5);
-  }
-
-  .glass-effect {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Custom Animations */
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
+/* Base styles */
+body {
+  background: linear-gradient(135deg, var(--color-pokedex-blue) 0%, #312e81 100%);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Pokedex Frame Styles */
+.pokedex-frame {
+  position: relative;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  background: linear-gradient(145deg, #dc0a2d 0%, #b8082a 100%);
+}
+
+.pokedex-screen {
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 3px solid #2a2a2a;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Button Styles */
+.pokedex-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.pokedex-button:active {
+  transform: scale(0.95);
+}
+
+.pokedex-button:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.pokedex-button-primary {
+  background-color: var(--color-pokedex-yellow);
+  color: #111827;
+}
+
+.pokedex-button-primary:hover {
+  background-color: #fbbf24;
+}
+
+.pokedex-button-secondary {
+  background-color: #334155;
+  color: white;
+}
+
+.pokedex-button-secondary:hover {
+  background-color: #475569;
+}
+
+/* Pokemon Card */
+.pokemon-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  transform: scale(1);
+  transition: all 0.3s;
+}
+
+.pokemon-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Type Badge */
+.type-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading Spinner */
+.pokeball-spinner {
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  animation: spin 2s linear infinite;
+}
+
+/* Input Styles */
+.pokedex-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #1e293b;
+  color: white;
+  border: 2px solid #475569;
+  transition: all 0.2s;
+}
+
+.pokedex-input:focus {
+  outline: none;
+  border-color: var(--color-pokedex-yellow);
+  box-shadow: 0 0 0 3px rgba(255, 203, 5, 0.1);
+}
+
+/* Stats Bar */
+.stat-bar {
+  width: 100%;
+  height: 0.5rem;
+  background-color: #334155;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-pokedex-yellow) 0%, #f97316 100%);
+  transition: all 0.5s ease-out;
+}
+
+/* Utility Classes */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.glow {
+  box-shadow: 0 0 20px rgba(255, 203, 5, 0.5);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Animations */
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }

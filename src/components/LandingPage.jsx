@@ -12,112 +12,99 @@ const LandingPage = () => {
 
   const handleEnter = () => {
     setIsAnimating(true)
-    // Simulate Pokédex opening animation
+    // Pokédex opening animation - navigate after animation completes
     setTimeout(() => {
       navigate('/search')
-    }, 800)
+    }, 1200) // Increased to 1200ms for smoother animation
   }
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row items-center justify-center p-4 gap-8">
-      {/* Centered Pokédex Device */}
-      <div className={`w-full max-w-md transition-all duration-800 ${isAnimating ? 'scale-95 opacity-0' : 'scale-100 opacity-100'}`}>
-        <div className="pokedex-frame p-8 relative">
-          {/* Top decorative section */}
-          <div className="flex items-center gap-4 mb-8">
-            {/* Main blue lens */}
-            <div className="relative">
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 shadow-lg relative overflow-hidden">
-                <div className="absolute top-2 left-2 w-6 h-6 bg-white/40 rounded-full"></div>
-                <div className={`absolute inset-0 bg-blue-400/30 ${isAnimating ? '' : 'animate-pulse'}`}></div>
-              </div>
-              {/* Lens border */}
-              <div className="absolute -inset-1 rounded-full border-4 border-white/20"></div>
-            </div>
+    <div className="min-h-screen flex flex-col items-center justify-center p-0 md:p-4">
+      {/* Pokédex Image Container */}
+      <div className="w-full md:max-w-md relative" style={{ perspective: '1200px' }}>
+        <div className={`relative w-full h-screen md:h-auto ${isAnimating ? 'animate-opening' : ''}`}>
+          {/* Pokédex Image - fills screen on mobile, contained on desktop */}
+          <img
+            src="/Pokedex-Start page.jpeg"
+            alt="Closed Pokédex Device"
+            className={`w-full h-full md:h-auto object-cover md:object-contain md:rounded-lg shadow-2xl transition-all duration-1000 ${
+              isAnimating ? 'animate-fade-zoom-out' : ''
+            }`}
+            style={
+              isAnimating
+                ? {
+                    animation: 'fade-zoom-out 1.2s ease-out forwards',
+                  }
+                : {}
+            }
+          />
 
-            {/* Small indicator lights */}
-            <div className="flex gap-2">
-              <div className="w-4 h-4 rounded-full bg-red-500 shadow-md"></div>
-              <div className="w-4 h-4 rounded-full bg-yellow-400 shadow-md"></div>
-              <div className="w-4 h-4 rounded-full bg-green-500 shadow-md"></div>
-            </div>
+          {/* "Pokédex" Title - positioned ABOVE the hinge line at 20% */}
+          <div className="absolute top-[20%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+            <h1
+              className="text-5xl md:text-6xl font-bold tracking-wider"
+              style={{
+                fontFamily: 'Pokemon, sans-serif',
+                color: '#FFCB05',
+                textShadow: `
+                  -3px -3px 0 #3D7DCA,
+                  3px -3px 0 #3D7DCA,
+                  -3px 3px 0 #3D7DCA,
+                  3px 3px 0 #3D7DCA,
+                  -3px 0 0 #3D7DCA,
+                  3px 0 0 #3D7DCA,
+                  0 -3px 0 #3D7DCA,
+                  0 3px 0 #3D7DCA,
+                  0 0 20px rgba(255,203,5,0.6)
+                `,
+                WebkitTextStroke: '1px #003A70'
+              }}
+            >
+              Pokédex
+            </h1>
           </div>
 
-          {/* Main screen area (closed) */}
-          <div className="bg-slate-900 rounded-lg p-6 mb-6 shadow-inner">
-            <div className="text-center space-y-4">
-              <div className="flex justify-center">
-                <div className="w-24 h-24 relative animate-float">
-                  {/* Pokéball icon */}
-                  <div className="w-full h-full rounded-full border-4 border-slate-700 overflow-hidden relative">
-                    <div className="absolute top-0 left-0 right-0 h-1/2 bg-red-500"></div>
-                    <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-white"></div>
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border-4 border-slate-700">
-                      <div className="absolute inset-2 rounded-full bg-slate-800"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-slate-400 text-sm">
-                National Pokédex Database
-              </p>
-              <p className="text-pokedex-yellow text-xs font-mono">
-                Gen I - IX | 1025 Pokémon
-              </p>
-            </div>
+          {/* Professor Oak - positioned at 60% (down 5% from 55%) */}
+          <div className="absolute top-[60%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+            <img
+              src="/professor-oak.png"
+              alt="Professor Oak presenting Pokédex"
+              className="w-48 md:w-64 h-auto object-contain animate-float"
+              style={{ filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.5))' }}
+            />
           </div>
 
-          {/* Control panel */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            {/* D-pad simulation */}
-            <div className="flex items-center justify-center">
-              <div className="relative w-20 h-20">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-8 bg-slate-800 rounded-t"></div>
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-8 bg-slate-800 rounded-b"></div>
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-8 h-6 bg-slate-800 rounded-l"></div>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-8 h-6 bg-slate-800 rounded-r"></div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-slate-900 rounded"></div>
-              </div>
-            </div>
-
-            {/* Action buttons */}
-            <div className="flex items-center justify-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-blue-500 shadow-md"></div>
-              <div className="w-10 h-10 rounded-full bg-red-400 shadow-md"></div>
-            </div>
-          </div>
-
-          {/* ENTER button */}
+          {/* Clickable Triangle/Arrow (Bottom Left) - moved up to 5.5% */}
           <button
             onClick={handleEnter}
             disabled={isAnimating}
-            className="w-full pokedex-button pokedex-button-primary text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            className="absolute bottom-[5.5%] left-[0.5%] w-20 h-20 md:bottom-[6.5%] md:left-[1.5%] md:w-24 md:h-24 cursor-pointer hover:scale-125 transition-transform duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            aria-label="Enter Pokédex"
+            style={{
+              background: 'transparent',
+              border: 'none',
+            }}
           >
-            {isAnimating ? 'OPENING...' : 'ENTER POKÉDEX'}
+            {/* Blinking arrow overlay on the triangle */}
+            <div className="w-full h-full flex items-center justify-center">
+              <span
+                className="text-yellow-400 text-4xl md:text-5xl font-bold animate-blink"
+                style={{
+                  filter: 'drop-shadow(0 0 8px rgba(255,203,5,0.8))',
+                  transform: 'rotate(0deg)'
+                }}
+              >
+                ▶
+              </span>
+            </div>
           </button>
-
-          {/* Bottom hinge indicator */}
-          <div className="mt-6 flex justify-center gap-1">
-            <div className="w-16 h-1 bg-slate-800 rounded"></div>
-          </div>
         </div>
 
-        {/* Attribution */}
-        <div className="text-center mt-6 text-white/60 text-sm">
+        {/* Attribution - hidden on mobile, visible on desktop */}
+        <div className="hidden md:block text-center mt-6 text-white/60 text-sm">
           <p>Interactive Pokédex Experience</p>
           <p className="text-xs mt-1">Powered by PokéAPI</p>
         </div>
-      </div>
-
-      {/* Professor Oak presenting - right on desktop, below on mobile */}
-      <div className="w-full md:w-auto flex justify-center md:block">
-        <img
-          src="/professor-oak.png"
-          alt="Professor Oak presenting Pokédex"
-          className="w-64 md:w-80 h-auto object-contain animate-float"
-          style={{ filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.5))' }}
-        />
       </div>
     </div>
   )

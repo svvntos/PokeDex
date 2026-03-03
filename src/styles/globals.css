@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Pokemon Font */
+@font-face {
+  font-family: 'Pokemon';
+  src: url('/fonts/Pokemon Solid.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Tailwind v4 CSS-based theme configuration */
 @theme {
   --color-pokedex-red: #DC0A2D;
@@ -8,7 +16,7 @@
   --color-pokedex-dark: #1A1A1A;
   --color-pokedex-light: #F5F5F5;
 
-  --font-family-pokemon: "Flexo-Demi", system-ui, sans-serif;
+  --font-family-pokemon: "Pokemon", "Flexo-Demi", system-ui, sans-serif;
 
   --animate-fade-in: fade-in 0.5s ease-in-out;
   --animate-slide-up: slide-up 0.4s ease-out;
@@ -29,6 +37,44 @@
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.3; }
+}
+
+@keyframes pokedex-open-left {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(1000px) rotateY(-120deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pokedex-open-right {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(1000px) rotateY(120deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-zoom-out {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
 }
 
 /* Base styles */
@@ -185,6 +231,14 @@ body {
 /* Animations */
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+.animate-fade-zoom-out {
+  animation: fade-zoom-out 1.2s ease-out forwards;
 }
 
 /* Scrollbar Styling */

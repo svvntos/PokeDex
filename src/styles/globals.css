@@ -77,6 +77,39 @@
   }
 }
 
+@keyframes slide-in-from-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out-to-left {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes input-float {
+  0%, 100% {
+    transform: translateY(0px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(59, 76, 202, 0.3);
+  }
+}
+
 /* Base styles */
 body {
   background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
@@ -239,6 +272,18 @@ body {
 
 .animate-fade-zoom-out {
   animation: fade-zoom-out 1.2s ease-out forwards;
+}
+
+.animate-slide-in-from-right {
+  animation: slide-in-from-right 0.8s ease-out forwards;
+}
+
+.animate-slide-out-to-left {
+  animation: slide-out-to-left 0.8s ease-out forwards;
+}
+
+.animate-input-float:hover {
+  animation: input-float 0.6s ease-in-out;
 }
 
 /* Scrollbar Styling */

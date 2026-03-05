@@ -19,24 +19,15 @@ const LandingPage = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-0 md:p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center p-0 md:p-4 overflow-hidden">
       {/* Pokédex Image Container */}
-      <div className="w-full md:max-w-md relative" style={{ perspective: '1200px' }}>
-        <div className={`relative w-full h-screen md:h-auto ${isAnimating ? 'animate-opening' : ''}`}>
+      <div className="w-full md:max-w-md relative">
+        <div className={`relative w-full h-screen md:h-auto ${isAnimating ? 'animate-slide-out-to-left' : ''}`}>
           {/* Pokédex Image - fills screen on mobile, contained on desktop */}
           <img
             src="/Pokedex-Start page.jpeg"
             alt="Closed Pokédex Device"
-            className={`w-full h-full md:h-auto object-cover md:object-contain md:rounded-lg shadow-2xl transition-all duration-1000 ${
-              isAnimating ? 'animate-fade-zoom-out' : ''
-            }`}
-            style={
-              isAnimating
-                ? {
-                    animation: 'fade-zoom-out 1.2s ease-out forwards',
-                  }
-                : {}
-            }
+            className="w-full h-full md:h-auto object-cover md:object-contain md:rounded-lg shadow-2xl"
           />
 
           {/* "Pokédex" Title - positioned ABOVE the hinge line at 20% */}

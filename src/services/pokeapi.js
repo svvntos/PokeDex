@@ -76,6 +76,32 @@ export const fetchMultiplePokemon = async (ids) => {
 }
 
 /**
+ * Fetch Pokemon name suggestions based on search query
+ * @param {string} query - Search query (e.g., "pi" for Pikachu)
+ * @returns {Promise<string[]>} Array of Pokemon names
+ */
+export const fetchPokemonSuggestions = async (query) => {
+  if (!query || query.length < 1) return []
+
+  try {
+    // Fetch the complete Pokemon list (cached by browser)
+    const response = await axios.get(`${BASE_URL}/pokemon?limit=1025`)
+    const allPokemon = response.data.results
+
+    // Filter Pokemon names that start with the query
+    const suggestions = allPokemon
+      .filter(pokemon => pokemon.name.toLowerCase().startsWith(query.toLowerCase()))
+      .slice(0, 8) // Limit to 8 suggestions
+      .map(pokemon => pokemon.name)
+
+    return suggestions
+  } catch (error) {
+    console.error('Error fetching suggestions:', error)
+    return []
+  }
+}
+
+/**
  * Get type color for styling
  * @param {string} type - Pokemon type
  * @returns {string} Hex color code

@@ -6,12 +6,20 @@ A sophisticated mobile-first Pokédex application that brings the classic Pokém
 
 ## Features
 
+### Landing Page
+- **Interactive Pokéball Button** - Click the center of the Pokéball to enter
+- **Haptic Feedback** - Feel a subtle vibration on mobile devices when clicking
+- **Pokemon Rolodex** - Continuously rotating showcase of random Pokémon
+- **Authentic Pokéball Design** - Faded red/white colors for a realistic background effect
+- **Smooth Card Transitions** - Overlapping cards with center-focus design
+
+### Core Features
 - **Classic Pokédex Design** - Red/white color scheme inspired by the original Kanto Pokédex
 - **Comprehensive Pokémon Data** - Access all 1,025 Pokémon from Generations 1-9
-- **Smart Search** - Find Pokémon by name or ID number
+- **Smart Search with Autocomplete** - Find Pokémon by name with real-time suggestions
 - **Random Pokémon** - Discover new Pokémon with the random button
 - **Detailed Stats** - View abilities, moves, types, evolution chains, and sprites
-- **Mobile-First Responsive** - Optimized for phones, tablets, and desktops
+- **Mobile-First Responsive** - Optimized for phones (320px+), tablets, and desktops
 - **Offline-Ready** - localStorage caching for previously viewed Pokémon
 - **Smooth Animations** - Premium feel with custom transitions and loading states
 
